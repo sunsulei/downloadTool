@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多线程下载器</title>
+</head>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+    function download(){
+        var url = $("input[name='url']").val();
+        var thread = $("input[name='thread']").val();
+        var location = $("input[name='location']").val();
+       $.post("/download",{url:url,thread:thread,location:location},function(data){
+           alert(data)
+       });
+    }
+
+</script>
+<body>
+
+<div align="center">
+<h1>欢迎访问下载器</h1>
+
+链接：<input type="text" name="url" placeholder="请输入需要下载的链接" ><br/>
+线程：<input type="text" name="thread" placeholder="下载任务的线程数"><br/>
+路径：<input type="text" name="location" placeholder="存放的路径（具体的文件夹）" value="e:/download/"><br/>
+<button onclick="download()">下载</button>
+    <div id="complete" style="color: red;size: 20px"></div>
+</div>
+</body>
+</html>
